@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Neighbourhood Map</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+
+
+	</head>
+	<body>
+
+	<nav>
+		<h2>NEIGHBOURHOOD</h2>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Events</a></li>
+			<li><a href="#">Places</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+
+	<form>
+		<div class="box">
+  			<div class="searchBox">
+				<span class="icon"><i class="fa fa-search"></i></span>
+				<input id="search" type="search" VALUE="" placeholder="Where do you want to go?">
+			  </div>
+			</div>
+		<input id="submit" class="btn bg-gray" type="button" value="Search">
+		<input id="show-listings" class="btn bg-gray" type="button" value="Show the places">
+		<input id="hide-listings" class="btn bg-gray" type="button" value="Hide the places">
+	</form> 
+	<hr>
+			<div>	
+		<span class="shape">Draw a shape to search within a range!</span>
+		    <button id="toggle-drawing" class="btn bg-gray" type="button">Drawing Tools</button></br>
+		<span class="traffic">Want to see the traffic?</span>
+			<button id="trafficToggle" class="btn bg-gray" type="button">Traffic</button>
+		</div>
+		<div id="map"></div>
+		<div id="pano"></div>
+
+
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+					<h3>Contact</h3>
+						<div class="input-append contact-box text-center">
+						<input type="text" class="full text-center" placeholder="Email to me">
+						<button class="btn bg-gray" type="button"> SUBMIT </button>
+						</div>
+					</div>
+				</div>
+				<!--/.row--> 
+			</div>
+			<!--/.container--> 
+		</footer>
+		<!--/footer-->
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjo4bDlh2pdMwbz3rCXmgdwooAyyiHawc&v=3&callback=initMap">
+    </script>
+
+		<script src="js/main.js" async defer></script>
+		<script src="js/Library/jQuery.js" async defer></script>
+	</body>
+</html>

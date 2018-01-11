@@ -1,0 +1,99 @@
+h1{
+  font-size: 2em;
+  color: #fff;
+  display: flex;
+  float:left;
+  margin: 5px auto 5px auto;
+}
+
+h2{
+  font-size: 1.4em;
+  color: #fff;
+  margin-top: 0;
+  padding: 1em 0 0 1em;
+}
+/*Navbar*/
+
+hr {
+  background: #D0D7D9;
+  height: 1px;
+  margin: 20px 0 20px 0;
+  border: none;
+}
+#map {
+  height: 40em;
+  width: 80%;
+  float: right;
+}
+
+nav{
+
+  background-color: #000;
+  opacity: 0.7;
+}
+
+ul{
+  list-style-type: none;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+li{
+  display: inline-block;
+  padding: 0 2% 0.5% 0;
+}
+
+a{
+  color: #fff;
+  text-align: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+.searchBox, .contact-box{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+.searchBox input#search, .full{
+  width: 20em;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 1em;
+  float: left;
+  color: #fff;
+  text-align: center;
+}
+
+.searchBox input#search::-webkit-input-placeholder {
+   color: #fff;
+}
+ 
+.searchBox input#search:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+}
+ 
+.searchBox input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+}
+ 
+.searchBox input#search:-ms-input-placeholder {  
+   color: #fff;  
+}
+
+.searchBox .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #fff;
+}
+
+button, .btn{
+    text-transform: uppercase;
+    height: 50px;
+  }
