@@ -1,3 +1,18 @@
+var map;
+
+// These are the real estate listings that will be shown to the user.
+        // Normally we'd have these in a database instead.        
+var locations = [
+  {title: 'Derby Silk Mill', location: {lat: 52.925690, lng: -1.475733}},
+  {title: 'Derby Museum and Art Gallery', location: {lat: 52.923039, lng: -1.480145}},
+  {title: 'Markeaton Park', location: {lat: 52.933525, lng: -1.505240}},
+  {title: 'Elvaston Castle Country Park', location: {lat: 52.892102, lng: -1.387390}},
+  {title: 'Alvaston Park', location: {lat: 52.904866, lng: -1.438370}},
+  {title: 'Derby River Gardens', location: {lat: 40.7180628, lng: -1.438370}}
+];
+
+var markers = [];
+
 function initMap() {
         var derby = {lat: 52.92277, lng: -1.47663};
         var // Create a styles array to use with the map.
@@ -35,4 +50,46 @@ function initMap() {
           position: derby,
           map: map
         });
+
+      // This function takes in a COLOR, and then creates a new marker
+      // icon of that color. The icon will be 21 px wide by 34 high, have an origin
+      // of 0, 0 and be anchored at 10, 34).
+      function makeMarkerIcon(markerColor) {
+        var markerImage = new google.maps.MarkerImage(
+          'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+          '|40|_|%E2%80%A2',
+          new google.maps.Size(21, 34),
+          new google.maps.Point(0, 0),
+          new google.maps.Point(10, 34),
+          new google.maps.Size(21,34));
+        return markerImage;
       }
+      
+        // The following group uses the location array to create an array of markers on initialize.
+        var highlightedIcon = makeMarkerIcon('0B6623');
+        var defaultIcon = makeMarkerIcon('50C878');
+        for (var i = 0; i < locations.length; i++) {
+          // Get the position from the location array.
+          var position = locations[i].location;
+          var title = locations[i].title;
+          // Create a marker per location, and put into markers array.
+          var marker = new google.maps.Marker({
+            map: map,
+            position: position,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            icon: defaultIcon,
+            id: i
+          });
+          // Push the marker to our array of markers.
+          markers.push(marker);
+
+          marker.addListener('mouseover', function() {
+              this.setIcon(highlightedIcon);
+          });
+          marker.addListener('mouseout', function() {
+              this.setIcon(defaultIcon);
+          });
+      }
+
+}
