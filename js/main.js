@@ -48,11 +48,34 @@ function initMap() {
         {title: 'Alvaston Park', location: {lat: 52.904866, lng: -1.438370}},
         {title: 'Derby River Gardens', location: {lat: 52.922866, lng: -1.438370}}
       ];
+      
+
+      //looping trough the locations array to create infowindows - still need to create the function populateInfowindow
+      var largeInfoWindow = new google.maps.InfoWindow();
+
+      for (i = 0; i < locations.length; i++){
+          var positions= locations[i].location;
+          var title = locations[i].title;
+
+          var marker = new google.maps.Marker({
+            map: map,
+            position: position,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            icon: defaultIcon,
+            id: i
+          });
+          markers.push(marker);
+          marker.addListener('click', function(){
+            populateInfoWindow(this, largeInfoWindow);
+          })
+      }
 
         //Creates a new marker for Derby
         var marker = new google.maps.Marker({
           position: derby,
-          map: map
+          map: map,
+          title: 'Derby, UK'
         });
 
       // This function takes in a COLOR, and then creates a new marker
