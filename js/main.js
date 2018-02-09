@@ -100,7 +100,7 @@ var highlightedIcon = makeMarkerIcon('50C878');
     function populateInfoWindow(marker, infowindow){
 //Check to make sure the infowindow is not already opened on this marker
       if (infowindow.marker != marker){
-        infowindow.setContent ('');
+        infowindow.setContent (marker.title);
         infowindow.marker = marker;
         infowindow.addListener('closeclick', function(){
           infowindow.marker = null;
