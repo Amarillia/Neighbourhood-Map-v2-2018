@@ -100,15 +100,41 @@ var highlightedIcon = makeMarkerIcon('50C878');
     function populateInfoWindow(marker, infowindow){
 //Check to make sure the infowindow is not already opened on this marker
       if (infowindow.marker != marker){
-        infowindow.setContent (marker.title);
+        infowindow.setContent('');
         infowindow.marker = marker;
+        //Make sure the marker property is cleared if the infowindow is closed
         infowindow.addListener('closeclick', function(){
           infowindow.marker = null;
         });
 
-        infowindow.open(map, marker);
-        //Make sure the marker property is cleared if the infowindow is closed
-        
+//Create a new infowindow service
+      var streetViewService = new google.maps.StreetViewService();
+//This service needs to get the panorama image based on the closest location to the marker
+//and needs to find out which way to point the camera, the heading and the pitch
+      var radius = 100;
+
+
+      function getStreetView(data, status){
+        if (status == google.maps.StreetViewStatus.OK){
+          var nearStreetViewLocation = data.location.latLng;
+          var heading = google.maps.geometry.spherical.computeHeading(
+          nearStreetViewLocation, marker.position);
+          infowindow.setContent('<div>' + marker.title + '</div><div id="pano"></div>');
+          var panoramaOptions = {
+            position: nearStreetViewLocation,
+            pov: {
+              heading: heading,
+              pitch:30
+            }
+          };
+          var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), panoramaOptions);
+        }else{
+          infowindow.setContent('<div>' + marker.title + '</div>' + '<div>No StreetView Found</div>');
+        }
+      }
+      streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
+      infowindow.open(map, marker);
       }
     }
     //This function will loop through the markers array and display them all
