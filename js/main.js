@@ -3,6 +3,8 @@ var map;
 //Create a new blank array for all the listing markers
 var markers = [];
 
+var polygon = null;
+
 function initMap() {
 
   var derby = {lat: 52.92277, lng: -1.47663};
@@ -51,6 +53,18 @@ function initMap() {
 
     var largeInfowindow = new google.maps.InfoWindow();
 
+    var drawingManager = new google.maps.drawing.DrawingManager({
+      drawingMode: google.maps.drawing.OverlayType.POLYGON,
+      drawingControl: true,
+      drawingControlOptions: {
+        position: google.maps.ControlPosition.TOP_LEFT,
+        drawingModes: [
+          google.maps.drawing.OverlayType.POLYGON
+        ]
+      }
+    });
+
+
 //listing marker icon
 var defaultIcon = makeMarkerIcon('0B6623');
 
@@ -94,6 +108,23 @@ var highlightedIcon = makeMarkerIcon('50C878');
 //Event listeners to show and hide the places
     document.getElementById('show-listings').addEventListener('click', showListings);
     document.getElementById('hide-listings').addEventListener('click', hideListings);
+    document.getElementById('toggle-drawing').addEventListener('click', function(){
+      toggleDrawing(drawingManager);
+    });
+
+    drawingManager.addListener('overlaycomplete', function(event){
+      if (polygon) {
+        polygon.setMap(null);
+        hideListings();
+      }
+
+      drawingManager.setDrawingMode(null);
+      polygon = event.overlay;
+      polygon.setEditable(true);
+      searchWithinPolygon();
+      polygon.getPath().addListener('set_at', searchWithinPolygon);
+      polygon.getPath().addListener('insert_at',searchWithinPolygon);
+    });
 
 //This function populates the infowindow when the marker is clicked.
 //We'll only allow one infowindow which will open at the marker that is clicked, and populate based on that marker's position
@@ -165,5 +196,27 @@ var highlightedIcon = makeMarkerIcon('50C878');
           );
         return markerImage;
       }
-}
+
+      function toggleDrawing (drawingManager) {
+        if (drawingManager.map){
+          drawingManager.setMap(null);
+          if (polygon) {
+            polygon.setMap(null);
+          }
+        } else {
+          drawingManager.setMap(map);
+        }
+      }
+
+      function searchWithinPolygon(){
+        for (var i=0; i<markers.length; i++) {
+          if (google.maps.geometry.poly.containsLocation(markers[i].position, polygon)){
+            markers[i].setMap(map);
+          }
+          else{
+            markers[i].setMap(null);
+          }
+        }
+      }
+  }
 
