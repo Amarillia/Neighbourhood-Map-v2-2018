@@ -103,3 +103,8 @@ button, .btn{
     height: 50px;
   }
 
+#toggle-drawing {
+  width: 27%;
+  position: relative;
+  margin-left: 10px;
+}
