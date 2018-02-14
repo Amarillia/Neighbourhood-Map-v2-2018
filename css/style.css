@@ -11,8 +11,8 @@ h2{
   color: #fff;
   margin-top: 0;
   padding: 1em 0 0 1em;
+  text-transform: uppercase;
 }
-/*Navbar*/
 
 hr {
   background: #D0D7D9;
@@ -31,8 +31,9 @@ hr {
   height: 200px;
 }
 
-nav{
+/*Navbar*/
 
+nav{
   background-color: #000;
   opacity: 0.7;
 }
@@ -48,6 +49,10 @@ li{
   padding: 0.5% 2%;
 }
 
+li:hover, li:focus, li:active {
+  background: #fff;
+}
+
 a{
   color: #fff;
   text-align: center;
@@ -55,81 +60,69 @@ a{
   text-transform: uppercase;
 }
 
-a:hover, a:focus {
+a:hover, a:focus, li:active {
   text-decoration: none;
-  color: #4D4D4D;
+  color: #000;
+  font-weight: 700;
 }
 
-li:hover {
-  background: #fff;
+.fa-search {
+  font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
 }
-
-.fa.fa-search:hover, .fa.fa-search:focus, .fa.fa-search:active {
-    color: #000;
-}
-
-#submit.btn:hover, #submit.btn:active, #submit.btn:focus {
-    background: #4D4D4D;
-  }
-
-.searchBox, .contact-box{
-  width: 300px;
-  vertical-align: middle;
-  white-space: nowrap;
+  .searchBox{
   position: relative;
-}
-
-.searchBox input#search, .full{
-  width: 20em;
-  height: 50px;
-  background: #2b303b;
-  border: none;
-  font-size: 1em;
-  float: left;
-  color: #fff;
-  text-align: center;
-}
-
-.searchBox input#search::-webkit-input-placeholder {
-   color: #fff;
-}
- 
-.searchBox input#search:-moz-placeholder { /* Firefox 18- */
-   color: #fff;  
-}
- 
-.searchBox input#search::-moz-placeholder {  /* Firefox 19+ */
-   color: #fff;  
-}
- 
-.searchBox input#search:-ms-input-placeholder {  
-   color: #fff;  
-}
-
-.searchBox .icon{
-  position: absolute;
-  top: 50%;
-  margin: 1.2em;
-  text-align:center;
   z-index: 1;
   color: #000;
 }
 
-#submit.btn {
-    width: 3.5em;
+.searchBox 
+  input#search,
+  .searchBox input#zoom-to-area-text,
+  .searchBox select#max-duration,
+  .searchBox select#mode,
+  .searchBox input#places-search,
+  .searchBox input#search-within-time-text,
+  .full{
+    display: inline-block;
+    height: 3em;
+    background: #2b303b;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+}
+
+.durText{
+  text-transform: uppercase;
+  font-size: 1.3em;
+}
+
+.btn{
+  border-radius: 0;
+  border: 0;
+  height: 2em;
+  padding: 0 12px;
+}
+
+
+
+.btn:hover, .btn:active, .btn:focus {
+    background: #4D4D4D;
+    color: #fff;
   }
 
-button, .btn{
-    text-transform: uppercase;
-    height: 50px;
-  }
 
-button:hover, .btn:hover{
-    filter: invert(100%);
-  }
+hr{
+  clear: right;
 
-#toggle-drawing {
-  width: 10em;
-  position: relative;
-  margin-left: 1em;
+}
+
+footer {
+  margin-bottom: 2%;
+}
+
+.contact-box{
+  display: inline-block;
 }
