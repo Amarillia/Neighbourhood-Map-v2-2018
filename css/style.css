@@ -66,8 +66,11 @@ li:hover {
 
 .fa.fa-search:hover, .fa.fa-search:focus, .fa.fa-search:active {
     color: #000;
-    background:#4D4D4D;
 }
+
+#submit.btn:hover, #submit.btn:active, #submit.btn:focus {
+    background: #4D4D4D;
+  }
 
 .searchBox, .contact-box{
   width: 300px;
