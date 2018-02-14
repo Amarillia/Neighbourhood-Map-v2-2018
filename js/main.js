@@ -120,6 +120,10 @@ var highlightedIcon = makeMarkerIcon('50C878');
     document.getElementById('zoom-to-area').addEventListener('click', function() {
       zoomToArea();
     });
+
+    document.getElementById('trafficToggle').addEventListener('click', function() {
+      toggleTraffic();
+    });
 /*
     document.getElementById('search-within-time').addEventListener('click', function(){
       searchWithinTime();
@@ -318,16 +322,24 @@ var highlightedIcon = makeMarkerIcon('50C878');
                 google.maps.event.addListener(markers[i], 'click', function(){
                   this.infowindow.close();
                 });
-
               }
-
             }
-
           }
-
         }
-
-
       }
+
+      //Function for toggle traffic on the map
+      function toggleTraffic(){
+        if(trafficLayer.getMap() === null){
+        //traffic layer is disabled.. enable it
+        trafficLayer.setMap(map);
+        } else {
+        //traffic layer is enabled.. disable it
+        trafficLayer.setMap(null);             
+        }
+      }
+      //create new traffic layer
+      trafficLayer = new google.maps.TrafficLayer();
+
   }
 
