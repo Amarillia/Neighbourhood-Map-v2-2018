@@ -101,7 +101,7 @@ li:hover {
 .searchBox .icon{
   position: absolute;
   top: 50%;
-  margin-left: 0 auto;
+  text-align:center;
   z-index: 1;
   color: #000;
 }
