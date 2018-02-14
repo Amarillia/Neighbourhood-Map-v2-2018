@@ -101,6 +101,7 @@ li:hover {
 .searchBox .icon{
   position: absolute;
   top: 50%;
+  margin: 1.2em;
   text-align:center;
   z-index: 1;
   color: #000;
@@ -122,5 +123,5 @@ button:hover, .btn:hover{
 #toggle-drawing {
   width: 10em;
   position: relative;
-  margin-left: 10px;
+  margin-left: 1em;
 }
