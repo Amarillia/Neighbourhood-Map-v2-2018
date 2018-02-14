@@ -45,7 +45,7 @@ ul{
 
 li{
   display: inline-block;
-  padding: 0 2% 0.5% 0;
+  padding: 0.5% 2%;
 }
 
 a{
@@ -53,6 +53,15 @@ a{
   text-align: center;
   font-size: 1.2em;
   text-transform: uppercase;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+  color: #4D4D4D;
+}
+
+li:hover {
+  background: #fff;
 }
 
 .searchBox, .contact-box{
@@ -103,8 +112,12 @@ button, .btn{
     height: 50px;
   }
 
+button:hover, .btn:hover{
+    filter: invert(100%);
+  }
+
 #toggle-drawing {
-  width: 27%;
+  width: 10em;
   position: relative;
   margin-left: 10px;
 }
