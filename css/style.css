@@ -64,6 +64,11 @@ li:hover {
   background: #fff;
 }
 
+.fa.fa-search:hover, .fa.fa-search:focus, .fa.fa-search:active {
+    color: #000;
+    filter: invert(100%);
+}
+
 .searchBox, .contact-box{
   width: 300px;
   vertical-align: middle;
@@ -119,10 +124,6 @@ button, .btn{
 button:hover, .btn:hover{
     filter: invert(100%);
   }
-
-.fa.fa-search:hover {
-    color: #fff;
-}
 
 #toggle-drawing {
   width: 10em;
