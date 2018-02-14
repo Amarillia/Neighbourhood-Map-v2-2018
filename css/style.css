@@ -101,14 +101,13 @@ li:hover {
 .searchBox .icon{
   position: absolute;
   top: 50%;
-  margin-left: 17px;
-  margin-top: 17px;
+  margin-left: 0 auto;
   z-index: 1;
   color: #000;
 }
 
 #submit.btn {
-    width: 4em;
+    width: 3.5em;
   }
 
 button, .btn{
