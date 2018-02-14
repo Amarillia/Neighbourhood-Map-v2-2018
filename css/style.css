@@ -120,6 +120,10 @@ button:hover, .btn:hover{
     filter: invert(100%);
   }
 
+.fa.fa-search:hover {
+    color: #fff;
+}
+
 #toggle-drawing {
   width: 10em;
   position: relative;
