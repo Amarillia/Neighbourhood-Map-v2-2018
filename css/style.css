@@ -107,6 +107,10 @@ li:hover {
   color: #000;
 }
 
+#submit.btn {
+    width: 4em;
+  }
+
 button, .btn{
     text-transform: uppercase;
     height: 50px;
