@@ -43,12 +43,18 @@ function initMap() {
     });
 
     var locations = [
-      {title: 'Derby Silk Mill', location: {lat: 52.925690, lng: -1.475733}},
+      {title: 'Derby Silk Mill', location: {lat: 52.9254831, lng: -1.4756791}},
       {title: 'Derby Museum and Art Gallery', location: {lat: 52.923039, lng: -1.480145}},
       {title: 'Markeaton Park', location: {lat: 52.933525, lng: -1.505240}},
       {title: 'Elvaston Castle Country Park', location: {lat: 52.892102, lng: -1.387390}},
-      {title: 'Alvaston Park', location: {lat: 52.904866, lng: -1.438370}},
-      {title: 'Derby River Gardens', location: {lat: 52.922866, lng: -1.438370}}
+      {title: 'Alvaston Park', location: {lat: 52.9048659, lng: -1.438370}},
+      {title: 'Derby River Gardens', location: {lat: 52.922866, lng: -1.471988}},
+      {title: 'Oxygen Freejumping Derby', location: {lat: 52.9161095, lng: -1.444648}},
+      {title: 'Hollywood Bowl Derby', location: {lat: 52.919967, lng: -1.473333}},
+      {title: 'Rollerworld of Derby', location: {lat: 52.937180, lng: -1.464893}},
+      {title: 'The Climbing Unit', location: {lat: 52.924742, lng: -1.450858}},
+      {title: 'Paint a Pot', location: {lat: 52.934804, lng: -1.505525}},
+      {title: 'Curious Cats Derby', location: {lat: 52.922733, lng: -1.480956}}
     ];
 
     var largeInfowindow = new google.maps.InfoWindow();
@@ -111,7 +117,14 @@ var highlightedIcon = makeMarkerIcon('50C878');
     document.getElementById('toggle-drawing').addEventListener('click', function(){
       toggleDrawing(drawingManager);
     });
-
+    document.getElementById('zoom-to-area').addEventListener('click', function() {
+      zoomToArea();
+    });
+/*
+    document.getElementById('search-within-time').addEventListener('click', function(){
+      searchWithinTime();
+    });
+*/
     drawingManager.addListener('overlaycomplete', function(event){
       if (polygon) {
         polygon.setMap(null);
@@ -142,7 +155,7 @@ var highlightedIcon = makeMarkerIcon('50C878');
       var streetViewService = new google.maps.StreetViewService();
 //This service needs to get the panorama image based on the closest location to the marker
 //and needs to find out which way to point the camera, the heading and the pitch
-      var radius = 100;
+      var radius = 50;
 
 
       function getStreetView(data, status){
@@ -217,6 +230,104 @@ var highlightedIcon = makeMarkerIcon('50C878');
             markers[i].setMap(null);
           }
         }
+      }
+      // This function takes the input value in the find nearby area text input
+      // locates it, and then zooms into that area. This is so that the user can
+      // show all listings, then decide to focus on one area of the map.
+      function zoomToArea() {
+        // Initialize the geocoder.
+        var geocoder = new google.maps.Geocoder();
+        // Get the address or place that the user entered.
+        var address = document.getElementById('zoom-to-area-text').value;
+        // Make sure the address isn't blank.
+        if (address == '') {
+          window.alert('You must enter an area, or address.');
+        } else {
+          // Geocode the address/area entered to get the center. Then, center the map
+          // on it and zoom in
+          geocoder.geocode(
+            { address: address,
+              componentRestrictions: {locality: 'Derby'}
+            }, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(13);
+              } else {
+                window.alert('We could not find that location - try entering a more' +
+                    ' specific place.');
+              }
+            });
+        }
+      }
+
+      function searchWithinTime(){
+        var distanceMatrixService = new google.maps.distanceMatrixService;
+        var address = document.getElementById('search-within-time-text').value;
+
+        if (address == ''){
+          window.alert('You must enter an address.');
+        } else {
+          hideListings();
+
+          var origins = [];
+          for (var i=0; i<markers.length; i++){
+            origins[i] = markers[i].position;
+          }
+          var destination = address;
+          var mode = document.getElementById('mode').value;
+
+          distanceMatrixService.getDistanceMatrix({
+            origins: origins,
+            destination: [destination],
+            travelMode: google.maps.TravelMode[mode],
+            unitSystem: google.maps.UnitSystem.IMPERIAL,
+          },
+          function(response, status) {
+            if (status !== google.maps.DistanceMatrixService.OK) {
+              window.alert('Error was: ' + status);
+            } else {
+              displayMarkersWithinTime(response);
+            }
+          });
+        }
+      }
+
+      function displayMarkersWithinTime(){
+        var maxDuration = document.getElementById('max-duration').value;
+        var origins = response.originAddresses;
+        var destinations = response.destinationAddresses;
+
+        var atLeastOne = false;
+        //Nested loop to create one element per origin and destination pair.
+        for (var i=0; i < origins.length; i++){
+          var results = response.rows[i].elements;
+          for (var j = 0; j < destinations.length; j++){
+            var elements = results[j];
+            if(element.status == "OK") {
+              var distanceText = element.distance.text;
+              var duration = element.duration.value / 60;
+              var durationText = element.duration.text;
+
+              if(duration <= maxDuration){
+                markers[i].setMap(map);
+                atLeastOne = true;
+
+                infowindow.open(map, markers[i]);
+
+                markers[i].infowindow = infowindow;
+                google.maps.event.addListener(markers[i], 'click', function(){
+                  this.infowindow.close();
+                });
+
+              }
+
+            }
+
+          }
+
+        }
+
+
       }
   }
 
