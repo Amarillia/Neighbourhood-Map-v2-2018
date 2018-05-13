@@ -124,11 +124,11 @@ var highlightedIcon = makeMarkerIcon('50C878');
     document.getElementById('trafficToggle').addEventListener('click', function() {
       toggleTraffic();
     });
-/*
+
     document.getElementById('search-within-time').addEventListener('click', function(){
       searchWithinTime();
     });
-*/
+
     drawingManager.addListener('overlaycomplete', function(event){
       if (polygon) {
         polygon.setMap(null);
@@ -251,6 +251,7 @@ var highlightedIcon = makeMarkerIcon('50C878');
           // on it and zoom in
           geocoder.geocode(
             { address: address,
+              country: 'UK',
               componentRestrictions: {locality: 'Derby'}
             }, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
@@ -265,7 +266,7 @@ var highlightedIcon = makeMarkerIcon('50C878');
       }
 
       function searchWithinTime(){
-        var distanceMatrixService = new google.maps.distanceMatrixService;
+        var distanceMatrixService = new google.maps.DistanceMatrixService;
         var address = document.getElementById('search-within-time-text').value;
 
         if (address == ''){
@@ -276,18 +277,18 @@ var highlightedIcon = makeMarkerIcon('50C878');
           var origins = [];
           for (var i=0; i<markers.length; i++){
             origins[i] = markers[i].position;
+
           }
           var destination = address;
           var mode = document.getElementById('mode').value;
 
           distanceMatrixService.getDistanceMatrix({
             origins: origins,
-            destination: [destination],
+            destinations: [destination],
             travelMode: google.maps.TravelMode[mode],
             unitSystem: google.maps.UnitSystem.IMPERIAL,
-          },
-          function(response, status) {
-            if (status !== google.maps.DistanceMatrixService.OK) {
+          }, function(response, status) {
+            if (status !== google.maps.DistanceMatrixStatus.OK) {
               window.alert('Error was: ' + status);
             } else {
               displayMarkersWithinTime(response);
@@ -296,7 +297,7 @@ var highlightedIcon = makeMarkerIcon('50C878');
         }
       }
 
-      function displayMarkersWithinTime(){
+      function displayMarkersWithinTime(response){
         var maxDuration = document.getElementById('max-duration').value;
         var origins = response.originAddresses;
         var destinations = response.destinationAddresses;
@@ -306,8 +307,8 @@ var highlightedIcon = makeMarkerIcon('50C878');
         for (var i=0; i < origins.length; i++){
           var results = response.rows[i].elements;
           for (var j = 0; j < destinations.length; j++){
-            var elements = results[j];
-            if(element.status == "OK") {
+            var element = results[j];
+            if(element.status === "OK") {
               var distanceText = element.distance.text;
               var duration = element.duration.value / 60;
               var durationText = element.duration.text;
@@ -315,7 +316,9 @@ var highlightedIcon = makeMarkerIcon('50C878');
               if(duration <= maxDuration){
                 markers[i].setMap(map);
                 atLeastOne = true;
-
+                var infowindow = new google.maps.InfoWindow({
+                  content: durationText + ' away, ' + distanceText + '<div><input type=\"button\" value=\"View Route\" onclick=' + '\"displayDirections(&quot;' + origins[i] + '&quot;);\"></input></div>'
+                });
                 infowindow.open(map, markers[i]);
 
                 markers[i].infowindow = infowindow;
@@ -326,6 +329,35 @@ var highlightedIcon = makeMarkerIcon('50C878');
             }
           }
         }
+        if (!atLeastOne) {
+          window.alert('We could not find any locations within that distance!');
+        }
+      }
+
+      function displayDirections(origin){
+        hideListings();
+        var directionsService = new google.maps.DirectionsService;
+        var destinationAddress = 
+          document.getElementById('search-within-time-text').value;
+        var mode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: origin,
+          destination: destinationAddress,
+          travelMode: google.maps.TravelMode[mode]
+        }, function(response, status){
+          if (status === google.maps.DirectionsStatus.OK){
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+              map: map,
+              directions: response,
+              draggable: true,
+              polylineOptions: {
+                strokeColor: 'green'
+              }
+            });
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
       }
 
       //Function for toggle traffic on the map
