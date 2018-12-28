@@ -1,0 +1,206 @@
+$primary-color: #fff;
+$secondary-color: #000;
+// * {
+//     box-sizing: border-box;
+//   }
+  
+  hr {
+    background: #D0D7D9;
+    height: 1px;
+    margin: 20px 0 20px 0;
+    border: none;
+  }
+  #map {
+    height: 40em;
+    width: 80%;
+    margin: 10px 0 10px auto;
+  }
+  
+  #pano {
+    width: 0;
+    height: 0;
+  }
+
+  h2{
+    font-size: 20px;
+    margin: 10px;
+    padding: 20px 0 0 0;
+    text-transform: uppercase;
+
+  }
+
+header{
+    background-color: $secondary-color;
+    opacity: 0.7;
+    display: inline-block;
+    width: 100%;
+
+  h1{
+    font-size: 25px;
+    color: $primary-color;
+    display: flex;
+    margin: 0;
+    padding: 20px 0 0 20px;
+    text-transform: uppercase;
+
+  }
+  
+
+
+  /*Navbar*/
+  
+  nav{
+      ul{
+        list-style-type: none;
+        text-align: right;
+        margin-bottom: 0;
+      }
+   
+      li{
+        display: inline-block;
+        padding: 10px 20px;
+      }
+      
+      li:hover, li:focus, li:active {
+        background: $primary-color;
+        border-bottom: 1px solid #4D4D4D;
+        color: $secondary-color;
+      }
+      
+      a{
+        color: $primary-color;
+        text-align: center;
+        font-size: 1.2em;
+        text-transform: uppercase;
+      }
+      
+      a:hover, a:focus, li:active {
+        text-decoration: none;
+        font-weight: 700;
+      }
+  }
+}
+ 
+  .searchBox{
+    color: $secondary-color;
+
+    input#search,
+    input#zoom-to-area-text,
+    select#max-duration,
+    select#mode,
+    input#places-search,
+    input#search-within-time-text,
+    .full{
+      background: #2b303b;
+      border: none;
+      font-size: 1em;
+      color: $primary-color;
+      text-align: center;
+      padding: 10px 30px;
+  }
+
+
+
+  input#places-search, input#zoom-to-area-text{
+      width: 250px;
+  }
+
+  .btn{
+    color: $primary-color;
+    border-radius: 0;
+    border: 0;
+    background: #2b303b;
+    padding: 10px 30px;
+    text-transform: uppercase; 
+    &.fa-search{
+        padding: 7px 15px;
+        font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+}
+
+  
+}
+  
+  .durText{
+    text-transform: uppercase;
+    font-size: 1.3em;
+  }
+  
+
+  
+span {
+    display: inline-block;
+    background: #2b303b;
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+    padding: 10px 30px;
+    text-transform: uppercase;
+}
+  
+  .btn:hover, .btn:active, .btn:focus {
+      background: #4D4D4D;
+      color: $primary-color;
+    }
+  
+  
+  hr{
+    clear: right;
+  
+  }
+  
+  footer {
+    clear: both;
+    bottom: 2%;
+    text-align: left;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+  
+    .container{
+    width: 100%;
+    }
+
+    .row{
+        margin: 2%;
+    }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  /* Style for the contact part */
+  input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $secondary-color;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    display: block;
+    background-color: $secondary-color;
+    color: $primary-color;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    max-width: 150px;
+    border-radius: 100px;
+    margin: 0 auto;
+}
+  
+  input[type=submit]:hover {
+    background-color: #4D4D4D;
+    color: $primary-color;
+
+  }
+
+  textarea{
+      height: 170px;
+  }
+
+}
