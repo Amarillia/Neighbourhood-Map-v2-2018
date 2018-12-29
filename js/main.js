@@ -33,7 +33,6 @@ function initMap() {
     { title: 'Rollerworld of Derby', location: { lat: 52.937180, lng: -1.464893 } },
     { title: 'The Climbing Unit', location: { lat: 52.924742, lng: -1.450858 } },
     { title: 'Paint a Pot', location: { lat: 52.934804, lng: -1.505525 } },
-    { title: 'Curious Cats Derby', location: { lat: 52.922733, lng: -1.480956 } }
   ];
 
   // Create a styles array to use with the map.
