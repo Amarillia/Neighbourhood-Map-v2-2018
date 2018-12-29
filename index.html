@@ -7,64 +7,80 @@
 	<meta charset="utf-8">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-	<header>
-		<h1>Places to visit in Derby</h1>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Places</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+	<div id="wrapper">
+		<header>
+
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul id="sidebar-nav">
+					<li class="sidebar-brand">
+						<h2>Places on the map</h2>
+						<hr>
+					</li>
+				</ul>
+			</div>
+			<!-- /#sidebar-wrapper -->
+
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fas fa-bars"></i>
+					</a>
+					<h1>Places to visit in Derby</h1>
+
+				</div>
+			</div>
+			<!-- /#page-content-wrapper -->
+
+
+		</header>
 		<!-- Prompt the user to focus on an area of the city -->
 		<section id="mapTools" class="searchBox">
 			<h2>Choose an area in Derby</h2>
-				<input id="zoom-to-area-text" type="text" placeholder="Choose an area">
-				<input id="zoom-to-area" type="button" class="btn fa-search" value="&#8981;">
-				<input id="show-listings" class="btn" type="button" value="Show the places">
-				<input id="hide-listings" class="btn" type="button" value="Hide the places">
-				<input id="toggle-drawing" class="btn" type="button" value="Draw your search area">
-				<input id="trafficToggle" class="btn" type="button" value="See the Traffic">
+			<input id="zoom-to-area-text" type="text" placeholder="Choose an area">
+			<input id="zoom-to-area" type="button" class="btn fa-search" value="&#8981;">
+			<input id="show-listings" class="btn" type="button" value="Show the places">
+			<input id="hide-listings" class="btn" type="button" value="Hide the places">
+			<input id="toggle-drawing" class="btn" type="button" value="Draw your search area">
+			<input id="trafficToggle" class="btn" type="button" value="See the Traffic">
 			<hr>
 		</section>
 		<section class="searchBox">
 			<h2>Choose interest in the area</h2>
 			<form>
-					<input id="places-search" type="search" value="" placeholder="Ex.: Restaurants in Derby">
-					<span class="text">Within</span>
-					<select id="max-duration">
-						<option value="10">10 min</option>
-						<option value="15">15 min</option>
-						<option value="30">30 min</option>
-						<option value="60">60 min</option>
-					</select>
-					<select id="mode">
-						<option value="DRIVING">Drive</option>
-						<option value="WALKING">Walk</option>
-						<option value="BICYCLING">Bike</option>
-						<option value="TRANSIT">Transit Ride</option>
-					</select>
+				<input id="places-search" type="search" value="" placeholder="Ex.: Restaurants in Derby">
+				<span class="text">Within</span>
+				<select id="max-duration">
+					<option value="10">10 min</option>
+					<option value="15">15 min</option>
+					<option value="30">30 min</option>
+					<option value="60">60 min</option>
+				</select>
+				<select id="mode">
+					<option value="DRIVING">Drive</option>
+					<option value="WALKING">Walk</option>
+					<option value="BICYCLING">Bike</option>
+					<option value="TRANSIT">Transit Ride</option>
+				</select>
 
-					<span class="text">of</span>
-					<input id="search-within-time-text" type="text" placeholder="Cat cafe Derby or 1 Friar Gate" name="search-within-time-text">
-					<input id="search-within-time" type="button" class="btn fa-search" value="&#8981;" name="search-within-time">
+				<span class="text">of</span>
+				<input id="search-within-time-text" type="text" placeholder="Cat cafe Derby or 1 Friar Gate" name="search-within-time-text">
+				<input id="search-within-time" type="button" class="btn fa-search" value="&#8981;" name="search-within-time">
 			</form>
 		</section>
 		<hr>
 
-		<div id="map"></div>
-		<div id="pano"></div>
+		<div id="map">
+			<div id="pano"></div>
+		</div>
 
 		<footer>
 			<div class="container">
@@ -83,17 +99,20 @@
 						</form>
 					</div>
 				</div>
-			<!--/.row-->
+				<!--/.row-->
 			</div>
 			<!--/.container-->
 		</footer>
 		<!--/footer-->
-
-		<script src="js/main.js" async defer></script>
-		<script src="js/Library/jQuery.js" async defer></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjo4bDlh2pdMwbz3rCXmgdwooAyyiHawc&v=3&libraries=drawing,geometry&v=3&callback=initMap">
-		</script>
-
+	</div>
+	<!-- /#wrapper -->
+	<!-- <script src="js/Library/jquery/jquery.min.js"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjo4bDlh2pdMwbz3rCXmgdwooAyyiHawc&v=3&libraries=drawing,geometry&v=3&callback=initMap">
+	</script>
+	<script src="js/main.js" async defer></script>
 
 </body>
 

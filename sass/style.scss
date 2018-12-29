@@ -12,21 +12,27 @@ $secondary-color: #000;
   }
   #map {
     height: 40em;
-    width: 80%;
-    margin: 10px 0 10px auto;
+    width: 100%;
+    margin: 0;
   }
   
   #pano {
-    width: 0;
-    height: 0;
+    width: 200px;
+    height: 200px;
   }
 
-  h2{
-    font-size: 20px;
-    margin: 10px;
-    padding: 20px 0 0 0;
-    text-transform: uppercase;
+h2{
+  font-size: 20px;
+  margin: 10px;
+  padding: 20px 0 0 0;
+  text-transform: uppercase;
+}
 
+  section {
+    text-align: center;
+    h2{
+      text-align: left;
+    }
   }
 
 header{
@@ -38,51 +44,16 @@ header{
   h1{
     font-size: 25px;
     color: $primary-color;
-    display: flex;
-    margin: 0;
-    padding: 20px 0 0 20px;
     text-transform: uppercase;
-
+    display: inline-block;
+    margin-left: 50px;
   }
-  
 
-
-  /*Navbar*/
-  
-  nav{
-      ul{
-        list-style-type: none;
-        text-align: right;
-        margin-bottom: 0;
-      }
-   
-      li{
-        display: inline-block;
-        padding: 10px 20px;
-      }
-      
-      li:hover, li:focus, li:active {
-        background: $primary-color;
-        border-bottom: 1px solid #4D4D4D;
-        color: $secondary-color;
-      }
-      
-      a{
-        color: $primary-color;
-        text-align: center;
-        font-size: 1.2em;
-        text-transform: uppercase;
-      }
-      
-      a:hover, a:focus, li:active {
-        text-decoration: none;
-        font-weight: 700;
-      }
-  }
 }
  
   .searchBox{
     color: $secondary-color;
+    margin: 0;
 
     input#search,
     input#zoom-to-area-text,
@@ -95,7 +66,6 @@ header{
       border: none;
       font-size: 1em;
       color: $primary-color;
-      text-align: center;
       padding: 10px 30px;
   }
 
@@ -136,7 +106,7 @@ span {
     font-size: 1em;
     color: #fff;
     text-align: center;
-    padding: 10px 30px;
+    padding: 10px 20px;
     text-transform: uppercase;
 }
   
@@ -160,10 +130,6 @@ span {
   
     .container{
     width: 100%;
-    }
-
-    .row{
-        margin: 2%;
     }
 
   h2 {
@@ -203,4 +169,127 @@ span {
       height: 170px;
   }
 
+}
+
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ body {
+  overflow-x: hidden;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+
+/* Sidebar Styles */
+
+#sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    text-indent: 20px;
+    line-height: 40px;
+    color: $primary-color;
+    a {
+      display: block;
+      text-decoration: none;
+      // color: #fff;
+      &:hover {
+        text-decoration: none;
+        // color: #fff;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      &:active, &:focus {
+        text-decoration: none;
+      }}
+  }
+}
+
+
+
+#sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+#sidebar-nav>.sidebar-brand a {
+  // color: #999999;
+}
+
+#sidebar-nav>.sidebar-brand a:hover {
+  // color: #fff;
+  background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
 }
