@@ -19,11 +19,6 @@ h2 {
   padding: 20px 0 0 0;
   text-transform: uppercase; }
 
-section {
-  text-align: center; }
-  section h2 {
-    text-align: left; }
-
 header {
   background-color: #000;
   opacity: 0.7;
@@ -38,7 +33,7 @@ header {
 
 .searchBox {
   color: #000;
-  margin: 0; }
+  margin: 0 0 0 20px; }
   .searchBox input#search,
   .searchBox input#zoom-to-area-text,
   .searchBox select#max-duration,
@@ -51,33 +46,40 @@ header {
     font-size: 1em;
     color: #fff;
     padding: 10px 30px; }
-  .searchBox input#places-search, .searchBox input#zoom-to-area-text {
-    width: 250px; }
+  .searchBox input#places-search,
+  .searchBox input#zoom-to-area-text,
+  .searchBox input#search-within-time-text {
+    width: 250px;
+    vertical-align: bottom; }
   .searchBox .btn {
     color: #fff;
     border-radius: 0;
     border: 0;
     background: #2b303b;
     padding: 10px 30px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    margin-top: 10px;
+    vertical-align: top; }
     .searchBox .btn.fa-search {
-      padding: 7px 15px;
+      padding: 4px 15px;
       font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-weight: 700;
-      font-size: 1.5em; }
+      font-size: 1.5em;
+      vertical-align: top; }
 
 .durText {
   text-transform: uppercase;
   font-size: 1.3em; }
 
-span {
+span, select {
   display: inline-block;
   background: #2b303b;
   font-size: 1em;
   color: #fff;
   text-align: center;
   padding: 10px 20px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  vertical-align: bottom; }
 
 .btn:hover, .btn:active, .btn:focus {
   background: #4D4D4D;
@@ -89,7 +91,6 @@ hr {
 footer {
   clear: both;
   bottom: 2%;
-  text-align: left;
   margin: 0 auto;
   background-color: #f2f2f2;
   /* Style for the contact part */ }
@@ -120,6 +121,8 @@ footer {
     color: #fff; }
   footer textarea {
     height: 170px; }
+  footer .col-lg-3, footer .col-md-6, footer .col-sm-6, footer .col-xs-12 {
+    margin: 0 auto 20px auto; }
 
 /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
