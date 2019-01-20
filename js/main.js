@@ -20,7 +20,6 @@ $("#menu-toggle").click(function (e) {
 
 function initMap() {
 
-
   const locations = [
     { title: 'Derby Silk Mill', location: { lat: 52.9254831, lng: -1.4756791 } },
     { title: 'Derby Museum and Art Gallery', location: { lat: 52.923039, lng: -1.480145 } },
@@ -96,7 +95,6 @@ function initMap() {
   //Create a new lat lng balance instance which captures the southwest and northeast corners of the viewport
   var bounds = new google.maps.LatLngBounds();
   var list = document.getElementById('sidebar-nav');
-
 
   for (var i = 0; i < locations.length; i++) {
     //Get the position from the location array.
@@ -406,6 +404,9 @@ function initMap() {
 
   //Needed to call the function so the markers are visible when the page loads
   showListings();
+
+  
+
 }
 
 
