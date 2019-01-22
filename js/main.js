@@ -95,12 +95,15 @@ function initMap() {
   //Create a new lat lng balance instance which captures the southwest and northeast corners of the viewport
   var bounds = new google.maps.LatLngBounds();
   var list = document.getElementById('sidebar-nav');
+  var sideBarPlaces = document.getElementById('sideBarPlaces');
+
 
   for (var i = 0; i < locations.length; i++) {
     //Get the position from the location array.
     var position = locations[i].location;
     var title = locations[i].title;
-    var item = document.createElement('li');
+    var item = document.createElement('option');
+    item.setAttribute("value", title);
     item.appendChild(document.createTextNode(title));
     list.appendChild(item);
 
@@ -405,7 +408,7 @@ function initMap() {
   //Needed to call the function so the markers are visible when the page loads
   showListings();
 
-  
+
 
 }
 

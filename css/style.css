@@ -21,6 +21,9 @@ h2 {
   margin: 10px;
   padding: 20px 0 0 0;
   text-transform: uppercase;
+  height: 65px;
+  line-height: 60px;
+  color: #fff;
 }
 
 header {
@@ -48,17 +51,22 @@ header h1 {
 .searchBox input#places-search,
 .searchBox input#search-within-time-text,
 .searchBox .full {
+  display: inline-block;
   background: #2b303b;
   border: none;
   font-size: 1em;
   color: #fff;
   padding: 10px 30px;
+  height: 40px;
+  margin-top: 10px;
+  width: 250px;
 }
 .searchBox input#places-search,
 .searchBox input#zoom-to-area-text,
 .searchBox input#search-within-time-text {
   width: 250px;
   vertical-align: bottom;
+  height: 40px;
 }
 .searchBox .btn {
   color: #fff;
@@ -93,6 +101,7 @@ select {
   padding: 10px 20px;
   text-transform: uppercase;
   vertical-align: bottom;
+  height: 40px;
 }
 
 .btn:hover,
@@ -158,41 +167,79 @@ body {
 }
 
 /* Sidebar Styles */
-#sidebar-nav {
+select {
+  border: none;
+  height: 40px;
+  width: 100%;
+}
+select #sidebar-nav {
   position: absolute;
-  top: 0;
   width: 250px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-#sidebar-nav li {
+select #sidebar-nav option {
+  background: #2b303b;
+}
+select li {
   text-indent: 20px;
   line-height: 40px;
   color: #fff;
 }
-#sidebar-nav li a {
+select li a {
   display: block;
   text-decoration: none;
 }
-#sidebar-nav li a:hover {
+select li a:hover {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.2);
 }
-#sidebar-nav li a:active, #sidebar-nav li a:focus {
+select li a:active, select li a:focus {
   text-decoration: none;
-}
-
-#sidebar-nav > .sidebar-brand {
-  height: 65px;
-  font-size: 18px;
-  line-height: 60px;
 }
 
 #sidebar-nav > .sidebar-brand a:hover {
   background: none;
 }
 
+@media (max-width: 767px) {
+  .container-fluid {
+    display: flex;
+  }
+  .container-fluid h1 {
+    margin-left: 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin-top: 0;
+    color: #000;
+    font-size: 20px;
+  }
+
+  .btn, select, form span {
+    width: 90%;
+  }
+
+  .searchBox input#search,
+.searchBox input#zoom-to-area-text,
+.searchBox select#max-duration,
+.searchBox select#mode,
+.searchBox input#places-search,
+.searchBox input#search-within-time-text {
+    width: 90%;
+  }
+
+  select, span, input {
+    margin-top: 10px;
+  }
+
+  #menu-toggle {
+    height: 40px;
+    width: 60px;
+  }
+}
 @media (min-width: 768px) {
   #wrapper {
     padding-left: 0;
