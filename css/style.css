@@ -131,6 +131,25 @@ body {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+#wrapper ul {
+  margin-top: 20px;
+}
+#wrapper ul li {
+  margin: 0;
+  color: #fff;
+  list-style-type: none;
+}
+#wrapper ul li a {
+  display: block;
+  text-decoration: none;
+}
+#wrapper ul li a:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+#wrapper ul li a:active, #wrapper ul li a:focus {
+  text-decoration: none;
+}
 
 #wrapper.toggled {
   padding-left: 250px;
@@ -182,22 +201,6 @@ select #sidebar-nav {
 select #sidebar-nav option {
   background: #2b303b;
 }
-select li {
-  text-indent: 20px;
-  line-height: 40px;
-  color: #fff;
-}
-select li a {
-  display: block;
-  text-decoration: none;
-}
-select li a:hover {
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.2);
-}
-select li a:active, select li a:focus {
-  text-decoration: none;
-}
 
 #sidebar-nav > .sidebar-brand a:hover {
   background: none;
@@ -218,7 +221,9 @@ select li a:active, select li a:focus {
     font-size: 20px;
   }
 
-  .btn, select, form span {
+  .btn,
+select,
+form span {
     width: 90%;
   }
 
@@ -231,7 +236,9 @@ select li a:active, select li a:focus {
     width: 90%;
   }
 
-  select, span, input {
+  select,
+span,
+input {
     margin-top: 10px;
   }
 

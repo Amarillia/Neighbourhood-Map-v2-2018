@@ -95,7 +95,7 @@ function initMap() {
   //Create a new lat lng balance instance which captures the southwest and northeast corners of the viewport
   var bounds = new google.maps.LatLngBounds();
   var list = document.getElementById('sidebar-nav');
-  var sideBarPlaces = document.getElementById('sideBarPlaces');
+  var sideBarList = document.getElementById('sidebar-list');
 
 
   for (var i = 0; i < locations.length; i++) {
@@ -115,6 +115,34 @@ function initMap() {
       animation: google.maps.Animation.DROP,
       id: i
     });
+
+
+    //Push the marker to our array of markers
+    markers.push(marker);
+    //Extend the boundaries of the map for each marker
+    bounds.extend(marker.position);
+    //Create an onclick event to open an infowindow at each marker
+    marker.addListener('click', function () {
+      populateInfoWindow(this, largeInfowindow);
+    });
+
+    marker.addListener('mouseover', function () {
+      this.setIcon(highlightedIcon);
+    });
+
+    marker.addListener('mouseout', function () {
+      this.setIcon(defaultIcon);
+    });
+  }
+
+  for (var j = 0; j < locations.length; j++) {
+    //Get the position from the location array.
+    // position = locations[i].location;
+    titleList = locations[j].title;
+    itemList = document.createElement('li');
+    itemList.setAttribute("value", titleList);
+    itemList.appendChild(document.createTextNode(titleList));
+    sideBarList.appendChild(itemList);
 
 
     //Push the marker to our array of markers

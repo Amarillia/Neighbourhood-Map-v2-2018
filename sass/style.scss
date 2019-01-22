@@ -136,6 +136,26 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    ul {
+        margin-top: 20px;
+        li {
+            margin: 0;
+            color: $primary-color;
+            list-style-type: none;
+            a {
+                display: block;
+                text-decoration: none; // color: #fff;
+                &:hover {
+                    text-decoration: none; // color: #fff;
+                    background: rgba(255, 255, 255, 0.2);
+                }
+                &:active,
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }
 
 #wrapper.toggled {
@@ -188,23 +208,6 @@ select {
             background: #2b303b;
         }
     }
-    li {
-        text-indent: 20px;
-        line-height: 40px;
-        color: $primary-color;
-        a {
-            display: block;
-            text-decoration: none; // color: #fff;
-            &:hover {
-                text-decoration: none; // color: #fff;
-                background: rgba(255, 255, 255, 0.2);
-            }
-            &:active,
-            &:focus {
-                text-decoration: none;
-            }
-        }
-    }
 }
 
 // #sidebar-nav>.sidebar-brand a {
@@ -218,7 +221,7 @@ select {
 @media(max-width:767px) {
     .container-fluid {
         display: flex;
-        h1{
+        h1 {
             margin-left: 20px;
             text-align: center;
         }
@@ -228,19 +231,23 @@ select {
         color: #000;
         font-size: 20px;
     }
-    .btn, select, form span {
+    .btn,
+    select,
+    form span {
         width: 90%;
-
     }
     .searchBox input#search,
     .searchBox input#zoom-to-area-text,
     .searchBox select#max-duration,
     .searchBox select#mode,
     .searchBox input#places-search,
-    .searchBox input#search-within-time-text, {
+    .searchBox input#search-within-time-text,
+        {
         width: 90%;
     }
-    select, span, input {
+    select,
+    span,
+    input {
         margin-top: 10px;
     }
     #menu-toggle {
