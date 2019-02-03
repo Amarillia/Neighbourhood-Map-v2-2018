@@ -20,20 +20,6 @@ $("#menu-toggle").click(function (e) {
 
 function initMap() {
 
-  const locations = [
-    { title: 'Derby Silk Mill', location: { lat: 52.9254831, lng: -1.4756791 } },
-    { title: 'Derby Museum and Art Gallery', location: { lat: 52.923039, lng: -1.480145 } },
-    { title: 'Markeaton Park', location: { lat: 52.933525, lng: -1.505240 } },
-    { title: 'Elvaston Castle Country Park', location: { lat: 52.892102, lng: -1.387390 } },
-    { title: 'Alvaston Park', location: { lat: 52.9048659, lng: -1.438370 } },
-    { title: 'Derby River Gardens', location: { lat: 52.922866, lng: -1.471988 } },
-    { title: 'Oxygen Freejumping Derby', location: { lat: 52.9161095, lng: -1.444648 } },
-    { title: 'Hollywood Bowl Derby', location: { lat: 52.919967, lng: -1.473333 } },
-    { title: 'Rollerworld of Derby', location: { lat: 52.937180, lng: -1.464893 } },
-    { title: 'The Climbing Unit', location: { lat: 52.924742, lng: -1.450858 } },
-    { title: 'Paint a Pot', location: { lat: 52.934804, lng: -1.505525 } },
-  ];
-
   // Create a styles array to use with the map.
   var styles = [{ featureType: "road", stylers: [{ hue: "#FFBB00" }, { saturation: 30 }, { lightness: 30 }, { gamma: 1 }] }, { featureType: "road.highway", stylers: [{ hue: "#FFC200" }, { saturation: -62 }, { lightness: 46 }, { gamma: 1 }] }, { featureType: "road.arterial", stylers: [{ hue: "#FF0300" }, { saturation: -100 }, { lightness: 51.2 }, { gamma: 1 }] }, { featureType: "road.local", stylers: [{ hue: "#FF0300" }, { saturation: -100 }, { lightness: 52 }, { gamma: 1 }] }, { featureType: "water", stylers: [{ hue: "#747ca9" }, { saturation: -20 }, { lightness: 2.4 }, { gamma: 1 }] }, { featureType: "landscape", elementType: "all", stylers: [{ hue: "#FFBB00" }, { saturation: 43.400000000000006 }, { lightness: 37.599999999999994 }, { gamma: 1 }] }, { featureType: "landscape", elementType: "geometry.fill", stylers: [{ visibility: "on" }, { color: "#fdb813" }, { saturation: "6" }, { lightness: "65" }, { gamma: "0.75" }] }, { featureType: "landscape.natural.landcover", elementType: "geometry.fill", stylers: [{ visibility: "on" }, { hue: "#daff00" }, { lightness: "99" }, { saturation: "-56" }] }, { featureType: "landscape.natural.terrain", elementType: "geometry.fill", stylers: [{ visibility: "on" }, { hue: "#c3ff00" }, { saturation: "-74" }, { lightness: "58" }, { gamma: "4.44" }, { weight: "0.92" }] }, { featureType: "poi", stylers: [{ hue: "#00FF6A" }, { saturation: -5.1 }, { lightness: 15.2 }, { gamma: 1 }] }],//map.setOptions({styles:styles});
 
@@ -94,74 +80,109 @@ function initMap() {
 
   //Create a new lat lng balance instance which captures the southwest and northeast corners of the viewport
   var bounds = new google.maps.LatLngBounds();
-  var list = document.getElementById('sidebar-nav');
-  var sideBarList = document.getElementById('sidebar-list');
+  // var list = document.getElementById('sidebar-nav');
+  // var sideBarList = document.getElementById('sidebar-list');
+
+  // const locations = [
+  //   { title: 'Derby Silk Mill', location: { lat: 52.9254831, lng: -1.4756791 } },
+  //   { title: 'Derby Museum and Art Gallery', location: { lat: 52.923039, lng: -1.480145 } },
+  //   { title: 'Markeaton Park', location: { lat: 52.933525, lng: -1.505240 } },
+  //   { title: 'Elvaston Castle Country Park', location: { lat: 52.892102, lng: -1.387390 } },
+  //   { title: 'Alvaston Park', location: { lat: 52.9048659, lng: -1.438370 } },
+  //   { title: 'Derby River Gardens', location: { lat: 52.922866, lng: -1.471988 } },
+  //   { title: 'Oxygen Freejumping Derby', location: { lat: 52.9161095, lng: -1.444648 } },
+  //   { title: 'Hollywood Bowl Derby', location: { lat: 52.919967, lng: -1.473333 } },
+  //   { title: 'Rollerworld of Derby', location: { lat: 52.937180, lng: -1.464893 } },
+  //   { title: 'The Climbing Unit', location: { lat: 52.924742, lng: -1.450858 } },
+  //   { title: 'Paint a Pot', location: { lat: 52.934804, lng: -1.505525 } },
+  // ];
+
+  var locationsDerby = {
+    locations: ko.observableArray(),
+    // showMarker: function{
+
+    // }
+  };
+
+  locationsDerby.locations.push('Derby Silk Mill');
+  locationsDerby.locations.push('Derby Museum and Art Gallery');
+  locationsDerby.locations.push('Markeaton Park');
+  locationsDerby.locations.push('Elvaston Castle Country Park');
+  locationsDerby.locations.push('Alvaston Park');
+  locationsDerby.locations.push('Derby River Gardens');
+  locationsDerby.locations.push('Oxygen Freejumping Derby');
+  locationsDerby.locations.push('Hollywood Bowl Derby');
+  locationsDerby.locations.push('Rollerworld of Derby');
+  locationsDerby.locations.push('The Climbing Unit');
+  locationsDerby.locations.push('Paint a Pot');
+  ko.cleanNode(document.getElementById('sidebar-list'));
+  ko.cleanNode(document.getElementById('sidebar-nav'));
+  ko.applyBindings(locationsDerby);
 
 
-  for (var i = 0; i < locations.length; i++) {
-    //Get the position from the location array.
-    var position = locations[i].location;
-    var title = locations[i].title;
-    var item = document.createElement('option');
-    item.setAttribute("value", title);
-    item.appendChild(document.createTextNode(title));
-    list.appendChild(item);
+  // for (var i = 0; i < locations.length; i++) {
+  //   //Get the position from the location array.
+  //   var position = locations[i].location;
+  //   var title = locations[i].title;
+  //   var item = document.createElement('option');
+  //   item.setAttribute("value", title);
+  //   item.appendChild(document.createTextNode(title));
+  //   list.appendChild(item);
 
-    //Create a marker per location, and put into markers array.
-    var marker = new google.maps.Marker({
-      position: position,
-      title: title,
-      icon: defaultIcon,
-      animation: google.maps.Animation.DROP,
-      id: i
-    });
-
-
-    //Push the marker to our array of markers
-    markers.push(marker);
-    //Extend the boundaries of the map for each marker
-    bounds.extend(marker.position);
-    //Create an onclick event to open an infowindow at each marker
-    marker.addListener('click', function () {
-      populateInfoWindow(this, largeInfowindow);
-    });
-
-    marker.addListener('mouseover', function () {
-      this.setIcon(highlightedIcon);
-    });
-
-    marker.addListener('mouseout', function () {
-      this.setIcon(defaultIcon);
-    });
-  }
-
-  for (var j = 0; j < locations.length; j++) {
-    //Get the position from the location array.
-    // position = locations[i].location;
-    titleList = locations[j].title;
-    itemList = document.createElement('li');
-    itemList.setAttribute("value", titleList);
-    itemList.appendChild(document.createTextNode(titleList));
-    sideBarList.appendChild(itemList);
+  //   //Create a marker per location, and put into markers array.
+  //   var marker = new google.maps.Marker({
+  //     position: position,
+  //     title: title,
+  //     icon: defaultIcon,
+  //     animation: google.maps.Animation.DROP,
+  //     id: i
+  //   });
 
 
-    //Push the marker to our array of markers
-    markers.push(marker);
-    //Extend the boundaries of the map for each marker
-    bounds.extend(marker.position);
-    //Create an onclick event to open an infowindow at each marker
-    marker.addListener('click', function () {
-      populateInfoWindow(this, largeInfowindow);
-    });
+  //   //Push the marker to our array of markers
+  //   markers.push(marker);
+  //   //Extend the boundaries of the map for each marker
+  //   bounds.extend(marker.position);
+  //   //Create an onclick event to open an infowindow at each marker
+  //   marker.addListener('click', function () {
+  //     populateInfoWindow(this, largeInfowindow);
+  //   });
 
-    marker.addListener('mouseover', function () {
-      this.setIcon(highlightedIcon);
-    });
+  //   marker.addListener('mouseover', function () {
+  //     this.setIcon(highlightedIcon);
+  //   });
 
-    marker.addListener('mouseout', function () {
-      this.setIcon(defaultIcon);
-    });
-  }
+  //   marker.addListener('mouseout', function () {
+  //     this.setIcon(defaultIcon);
+  //   });
+  // }
+
+  // for (var j = 0; j < locations.length; j++) {
+  //   //Get the position from the location array.
+  //   // position = locations[i].location;
+  //   titleList = locations[j].title;
+  //   itemList = document.createElement('li');
+  //   itemList.setAttribute("value", titleList);
+  //   itemList.appendChild(document.createTextNode(titleList));
+  //   sideBarList.appendChild(itemList);
+  // }
+
+  //Push the marker to our array of markers
+  markers.push(marker);
+  //Extend the boundaries of the map for each marker
+  bounds.extend(marker.position);
+  //Create an onclick event to open an infowindow at each marker
+  marker.addListener('click', function () {
+    populateInfoWindow(this, largeInfowindow);
+  });
+
+  marker.addListener('mouseover', function () {
+    this.setIcon(highlightedIcon);
+  });
+
+  marker.addListener('mouseout', function () {
+    this.setIcon(defaultIcon);
+  });
 
   //Event listeners to show and hide the places
   var showPlaces = document.getElementById('show-listings');
