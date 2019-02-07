@@ -26,9 +26,7 @@ h2 {
     margin: 10px;
     padding: 20px 0 0 0;
     text-transform: uppercase;
-    height: 65px;
-    line-height: 60px;
-    color: #fff
+    color: $secondary-color;
 }
 
 header {
@@ -36,13 +34,18 @@ header {
     opacity: 0.7;
     display: inline-block;
     width: 100%;
-    h1 {
-        font-size: 25px;
-        color: $primary-color;
-        text-transform: uppercase;
-        display: inline-block;
-        margin-left: 50px;
-    }
+}
+h1 {
+    font-size: 25px;
+    color: $primary-color;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.btn {
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
 }
 
 .searchBox {
@@ -63,12 +66,12 @@ header {
         padding: 10px 30px;
         height: 40px;
         margin-top: 10px;
-        width: 250px;
+        width: 300px;
     }
     input#places-search,
     input#zoom-to-area-text,
     input#search-within-time-text {
-        width: 250px;
+        width: 300px;
         vertical-align: bottom;
         height: 40px;
     }
@@ -128,6 +131,9 @@ hr {
 
 body {
     overflow-x: hidden;
+    .navbar {
+        background: #2b303b;
+    }
 }
 
 #wrapper {
@@ -159,68 +165,81 @@ body {
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 300px;
+    background-color: $secondary-color;
+    border: 1px solid $secondary-color;
+    h2 {
+        color: $primary-color;
+        text-align: center;
+    }
 }
 
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 300px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -300px;
     overflow-y: auto;
-    background: #000;
+    background: #2b303b;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    input {
+        padding-left: 10px;
+        line-height: 2;
+    }
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 300px;
 }
 
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 15px;
+    padding: 0;
+    margin: 0;
+    .container-fluid{
+        margin: 0;
+        padding: 0;
+    }
 }
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    margin-right: -300px;
 }
 
 /* Sidebar Styles */
 
-select {
-    border: none;
-    height: 40px;
-    width: 100%;
-    #sidebar-nav {
-        position: absolute;
-        width: 250px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        option {
-            background: #2b303b;
-        }
-    }
-}
-
+// select {
+//     border: none;
+//     height: 40px;
+//     width: 100%;
+//     #sidebar-nav {
+//         position: absolute;
+//         width: 300px;
+//         margin: 0;
+//         padding: 0;
+//         list-style: none;
+//         option {
+//             background: #2b303b;
+//         }
+//     }
+// }
 // #sidebar-nav>.sidebar-brand a {
 //   // color: #999999;
 // }
-#sidebar-nav>.sidebar-brand a:hover {
-    // color: #fff;
-    background: none;
-}
-
+// #sidebar-nav>.sidebar-brand a:hover {
+//     // color: #fff;
+//     background: none;
+// }
 @media(max-width:767px) {
     .container-fluid {
-        display: flex;
+        // display: flex;
         h1 {
             margin-left: 20px;
             text-align: center;
@@ -254,6 +273,12 @@ select {
         height: 40px;
         width: 60px;
     }
+    #wrapper.toggled {
+        padding-left: 150px;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 150px;
+    }
 }
 
 @media(min-width:768px) {
@@ -261,16 +286,16 @@ select {
         padding-left: 0;
     }
     #wrapper.toggled {
-        padding-left: 250px;
+        padding-left: 300px;
     }
     #sidebar-wrapper {
         width: 0;
     }
     #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
+        width: 300px;
     }
     #page-content-wrapper {
-        padding: 20px;
+        padding: 10px;
         position: relative;
     }
     #wrapper.toggled #page-content-wrapper {
