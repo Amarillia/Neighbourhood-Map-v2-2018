@@ -35,6 +35,7 @@ header {
     display: inline-block;
     width: 100%;
 }
+
 h1 {
     font-size: 25px;
     color: $primary-color;
@@ -202,7 +203,7 @@ body {
     position: absolute;
     padding: 0;
     margin: 0;
-    .container-fluid{
+    .container-fluid {
         margin: 0;
         padding: 0;
     }
@@ -260,7 +261,7 @@ body {
     .searchBox select#max-duration,
     .searchBox select#mode,
     .searchBox input#places-search,
-    .searchBox input#search-within-time-text,
+    .searchBox input#search-within-time-text
         {
         width: 90%;
     }

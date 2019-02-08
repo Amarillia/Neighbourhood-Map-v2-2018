@@ -247,6 +247,13 @@ function initMap() {
     }
   }
 
+    // Close infowindow when clicked elsewhere on the map
+    map.addListener("click", function(){
+      infowindow.close(infowindow);
+  });
+
+
+
   // *** Change markers ***
   //marker icon when the user hover the marker
   var defaultIcon = "img/red_pin.png";
@@ -262,6 +269,17 @@ function initMap() {
     );
     return markerImage;
   }
+
+  // Recenter map upon window resize
+  window.onresize = function () {
+    map.fitBounds(bounds);
+};
+
+// // Foursquare API Url parameters in global scope
+// var BaseUrl = "https://api.foursquare.com/v2/venues/",
+//     fsClient_id = "client_id=J4JTA0KKSKB50R1ONPYB3W4H532SPS403IHJKL4VQMNMNKT0",
+//     fsClient_secret = "&client_secret=W5FBT3FTE1X4RVJXPSJJDNNXCYHXL0OMH1TPVINZ40NO0LX5",
+// fsVersion = "&v=20161507";
 
 
 
