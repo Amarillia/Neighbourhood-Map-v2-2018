@@ -5,6 +5,7 @@ This single page application shows a map of interesting places in the centre of 
 1. Google Maps
 2. Fontawesome
 3. JQuery
+4. Wikimedia API
 
 ## Project Requirements / Features
 

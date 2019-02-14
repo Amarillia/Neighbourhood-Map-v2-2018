@@ -190,6 +190,10 @@ body .navbar {
 #wrapper.toggled #sidebar-wrapper {
   width: 300px;
 }
+#wrapper.toggled #sidebar-wrapper .list-group h3 {
+  color: #fff;
+  text-align: center;
+}
 
 #page-content-wrapper {
   width: 100%;

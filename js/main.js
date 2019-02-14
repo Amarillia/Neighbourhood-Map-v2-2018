@@ -1,10 +1,10 @@
 var map;
 
-var DERBY_BOUNDS = {
-  north: -1.556857,
+const DERBY_BOUNDS = {
+  east: -2.5,
   south: 52.861034,
-  west: -1.383073,
-  east: 52.968132,
+  west: -1.7,
+  north: 52.968132,
 };
 var DERBY = { lat: 52.92277, lng: -1.47663 };
 
@@ -83,7 +83,7 @@ function initMap() {
     marker.addListener('click', function () {
       var largeInfowindow = new google.maps.InfoWindow();
       populateInfoWindow(this, largeInfowindow);
-    });
+       });
 
     marker.addListener('mouseover', function () {
       this.setIcon(highlightedIcon);
@@ -247,9 +247,9 @@ function initMap() {
     }
   }
 
-    // Close infowindow when clicked elsewhere on the map
-    map.addListener("click", function(){
-      infowindow.close(infowindow);
+  // Close infowindow when clicked elsewhere on the map
+  map.addListener("click", function () {
+    infowindow.close(infowindow);
   });
 
 
@@ -269,18 +269,6 @@ function initMap() {
     );
     return markerImage;
   }
-
-  // Recenter map upon window resize
-  window.onresize = function () {
-    map.fitBounds(bounds);
-};
-
-// // Foursquare API Url parameters in global scope
-// var BaseUrl = "https://api.foursquare.com/v2/venues/",
-//     fsClient_id = "client_id=J4JTA0KKSKB50R1ONPYB3W4H532SPS403IHJKL4VQMNMNKT0",
-//     fsClient_secret = "&client_secret=W5FBT3FTE1X4RVJXPSJJDNNXCYHXL0OMH1TPVINZ40NO0LX5",
-// fsVersion = "&v=20161507";
-
-
+  
 
 }
