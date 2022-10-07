@@ -95,7 +95,7 @@ function initMap() {
 
   }
 
-  ko.applyBindings(new ViewModel());
+//   ko.applyBindings(new ViewModel());
 
   // Drawing section
   var drawingManager = new google.maps.drawing.DrawingManager({
